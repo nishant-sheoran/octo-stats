@@ -1,0 +1,19 @@
+name: Latest blog post workflow
+on: 
+  schedule:
+    - cron: '0 0 * * *' # Run daily at midnight
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs: 
+  update-readme-with-blog: 
+    name: Update README with latest blog posts
+    runs-on: ubuntu-22.04
+    steps: 
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/blog-post-workflow@v1
+        with: 
+          max_post_count: "4"
+          feed_list: https://nishant-sheoran.medium.com/feed
