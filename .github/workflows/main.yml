@@ -27,7 +27,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with: 
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
@@ -53,5 +53,5 @@ jobs:
       - name: commiting changed svg template
         run: |
           git add .
-          git commit -m "Github Stats updated 🎉" || echo
+          git commit -m "Github Stats updated 🎉" --allow-empty
           git push
